@@ -1,9 +1,15 @@
+env:
+  - name: LOG_PATH
+    value: "/var/log/app/application.log"
+  - name: LOG_LEVEL
+    value: "info"
+
 replicaCount: 4
 
 image:
   repository: "angelvs/go-api"
   tag: latest
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 service:
   type: LoadBalancer
@@ -25,3 +31,10 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteMany
+  size: 1Gi
+  storageClass: ""
+  path: "/data/logs"
