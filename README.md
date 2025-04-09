@@ -36,3 +36,14 @@ Clone the project
   curl localhost:8080
 ```
 
+```bash
+  helm repo add prometheus-community https:prometheus-community.github.io/helm-charts
+
+  helm repo update
+
+  helm install kube-prometheus-stack \
+  --create-namespace \
+  --namespace kube-prometheus-stack \
+  prometheus-community/kube-prometheus-stack
+```
+
